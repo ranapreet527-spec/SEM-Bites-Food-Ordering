@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SEM Bites – Campus Food Ordering</title>
+
+    <!-- Favicon (logo in tab) -->
+    <link rel="icon" type="image/png" href="logo.png" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo">SEM<span>-</span>BITES</div>
+      <div class="logo">
+        <img src="logo.png" alt="SEM BITES" height="50" />
+      </div>
+      <div class="nav-right">
+        <button class="cart-btn" onclick="openCart()">
+          🛒 Cart <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-tag">🎓 Campus Canteen · Semester</div>
+      <h1>Fuel Your <em>Study</em><br />Sessions</h1>
+      <p>
+        Order hot meals, snacks & drinks straight from your college canteen —
+        delivered to your classroom.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollToMenu()">
+          🍽 Browse Menu
+        </button>
+      </div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Menu Items</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15m</div>
+          <div class="stat-label">Avg Delivery</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">₹20</div>
+          <div class="stat-label">Delivery Fee</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4.8★</div>
+          <div class="stat-label">Student Rating</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="section" id="menu-section">
+      <div class="section-head">
+        <div class="section-title">Our <span>Menu</span></div>
+      </div>
+      <div class="pills" id="pills">
+        <button class="pill active" onclick="filterMenu('all', this)">
+          🍽 All
+        </button>
+        <button class="pill" onclick="filterMenu('meals', this)">
+          🍛 Meals
+        </button>
+        <button class="pill" onclick="filterMenu('snacks', this)">
+          🍟 Snacks
+        </button>
+        <button class="pill" onclick="filterMenu('drinks', this)">
+          ☕ Drinks
+        </button>
+        <button class="pill" onclick="filterMenu('desserts', this)">
+          🍮 Desserts
+        </button>
+      </div>
+      <div class="food-grid" id="food-grid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        Made with ❤️ for <strong></strong> students SEM-BITES Campus Canteen
+      </p>
+    </footer>
+
+    <!-- OVERLAY + CART SIDEBAR -->
+    <div class="overlay" id="overlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h2>🛒 Your Order</h2>
+        <button class="close-btn" onclick="closeCart()">✕</button>
+      </div>
+      <div class="cart-items" id="cart-items-list">
+        <div class="empty-cart">
+          <div class="empty-icon">🍽️</div>
+          <p>Your cart is empty.<br />Add something delicious!</p>
+        </div>
+      </div>
+      <div class="cart-footer">
+        <div class="total-row">
+          <span class="total-label">Total Amount</span>
+          <span class="total-amount" id="cart-total">₹0</span>
+        </div>
+        <button
+          class="checkout-btn"
+          id="checkout-btn"
+          onclick="placeOrder()"
+          disabled
+        >
+          Place Order →
+        </button>
+      </div>
+    </div>
+
+    <!-- ORDER SUCCESS MODAL -->
+    <div class="modal-overlay" id="success-modal">
+      <div class="modal">
+        <div class="check">✅</div>
+        <h2>Order Placed!</h2>
+        <p>
+          Your order <span class="order-id" id="order-id-txt"></span> has been
+          confirmed.<br />Estimated delivery: <strong>12–18 min</strong>.
+        </p>
+        <button class="btn-primary modal-back-btn" onclick="closeModal()">
+          Back to Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
